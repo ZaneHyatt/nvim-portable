@@ -1,0 +1,11 @@
+# swap/backup
+*.swp
+*.swo
+*.un~
+Session.vim
+
+# Optional: ignore plugin lock if you prefer floating versions
+# lazy-lock.json
+
+# OS junk
+.DS_Store
