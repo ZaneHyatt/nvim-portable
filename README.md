@@ -4,9 +4,13 @@ Turnkey installer for my Neovim setup. It links this repo’s `nvim/` to the cor
 
 ## Quick install (choose your OS)
 
-### macOS / Linux
+## Quick install (safer bootstrap method)
+
+
+### macOS / Linux / WSL
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/YOUR_GH_USERNAME/YOUR_REPO_NAME/main/scripts/install.sh)"
+REPO_SLUG=YOUR_GH_USERNAME/YOUR_REPO_NAME \
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/YOUR_GH_USERNAME/YOUR_REPO_NAME/main/scripts/bootstrap.sh)"
 ```
 
 ### Windows (PowerShell)
