@@ -12,6 +12,11 @@ err() { printf "\033[1;31m[error]\033[0m %s\n" "$*" >&2; }
 
 have() { command -v "$1" >/dev/null 2>&1; }
 
+# Add this guard near the top, after variables are set
+if [ ! -f "$SRC_DIR/init.lua" ]; then
+err "Couldn't find '$SRC_DIR/init.lua'. If you ran this via curl, use scripts/bootstrap.sh instead (see README)."; exit 2
+fi
+
 install_prereqs_linux() {
   if have apt; then
     sudo apt update
