@@ -55,6 +55,8 @@ MIT (or whatever you prefer)
 [lazy.nvim]: https://github.com/folke/lazy.nvim
 
 ### Custom Zane Install
+
+## Linux / WSL
 ```bash
 REPO_SLUG=ZaneHyatt/nvim-portable \
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/ZaneHyatt/nvim-portable/main/scripts/bootstrap.sh)" && \
@@ -65,6 +67,24 @@ tar xzf nvim-linux-x86_64.tar.gz -C ~/.local/neovim-nightly --strip-components=1
 echo 'export PATH="$HOME/.local/neovim-nightly/bin:$PATH"' >> ~/.bashrc && \
 source ~/.bashrc && \
 sudo apt install -y python3-venv ca-certificates
+```
+
+## MacOS
+```bash
+REPO_SLUG=ZaneHyatt/nvim-portable && \
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/ZaneHyatt/nvim-portable/main/scripts/bootstrap.sh)" && \
+ARCH="$(uname -m)" && \
+NVIM_TAR="$([ "$ARCH" = "arm64" ] && echo nvim-macos-arm64.tar.gz || echo nvim-macos-x86_64.tar.gz)" && \
+cd ~ && \
+curl -fsSLo "$NVIM_TAR" "https://github.com/neovim/neovim/releases/download/nightly/$NVIM_TAR" && \
+mkdir -p ~/.local/neovim-nightly && \
+tar xzf "$NVIM_TAR" -C ~/.local/neovim-nightly --strip-components=1 && \
+rm -f "$NVIM_TAR" && \
+RC_FILE="$([ -n "$ZSH_VERSION" ] && echo ~/.zshrc || echo ~/.bashrc)" && \
+echo 'export PATH="$HOME/.local/neovim-nightly/bin:$PATH"' >> "$RC_FILE" && \
+. "$RC_FILE" && \
+/usr/bin/python3 -m ensurepip --upgrade && \
+/usr/bin/python3 -m pip install --user --upgrade pip pynvim
 ```
 
 Make sure to then enter ":Lazy sync" once in nvim
