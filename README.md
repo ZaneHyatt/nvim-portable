@@ -53,3 +53,18 @@ make uninstall  # removes ~/.config/nvim (symlink); backups untouched
 MIT (or whatever you prefer)
 
 [lazy.nvim]: https://github.com/folke/lazy.nvim
+
+### Custom Zane Install
+```bash
+REPO_SLUG=ZaneHyatt/nvim-portable \
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/ZaneHyatt/nvim-portable/main/scripts/bootstrap.sh)" && \
+cd ~ && \
+wget https://github.com/neovim/neovim/releases/download/nightly/nvim-linux-x86_64.tar.gz && \
+mkdir -p ~/.local/neovim-nightly && \
+tar xzf nvim-linux-x86_64.tar.gz -C ~/.local/neovim-nightly --strip-components=1 && \
+echo 'export PATH="$HOME/.local/neovim-nightly/bin:$PATH"' >> ~/.bashrc && \
+source ~/.bashrc && \
+sudo apt install -y python3-venv ca-certificates
+```
+
+Make sure to then enter ":Lazy sync" once in nvim
