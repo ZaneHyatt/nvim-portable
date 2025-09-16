@@ -71,8 +71,8 @@ sudo apt install -y python3-venv ca-certificates
 
 ## MacOS
 ```bash
-REPO_SLUG=ZaneHyatt/nvim-portable && \
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/ZaneHyatt/nvim-portable/main/scripts/bootstrap.sh)" && \
+bash -c "REPO_SLUG=ZaneHyatt/nvim-portable; curl -fsSL https://raw.githubusercontent.com/ZaneHyatt/nvim-portable/main/scripts/bootstrap.sh | bash"
+ && \
 ARCH="$(uname -m)" && \
 NVIM_TAR="$([ "$ARCH" = "arm64" ] && echo nvim-macos-arm64.tar.gz || echo nvim-macos-x86_64.tar.gz)" && \
 cd ~ && \
